@@ -10,14 +10,18 @@ public class BallBody : MonoBehaviour
     [SerializeField] private ParticleSystem partycle;
     public static Action AddScore;
 
+    private bool wasClicked;
+
     private void Start(){
         ChangeBallColor();
     }
     
     private void OnMouseDown() {
+        if(wasClicked || Time.timeScale == 0) return;
         StartPartycleEffect();
         AddScore?.Invoke();
         Destroy(gameObject, 0.2f);
+        wasClicked = true;
     }
 
     private void ChangeBallColor(){

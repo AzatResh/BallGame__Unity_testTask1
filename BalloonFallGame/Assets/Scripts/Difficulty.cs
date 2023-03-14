@@ -12,7 +12,8 @@ public class Difficulty : MonoBehaviour
     private int currentScore;
 
     public float GetDifficulty(){
-        if(currentScore<=maxScoreDifficulty) return (float)currentScore/maxScoreDifficulty;
+        if(currentScore<minScoreDifficulty) return 0;
+        else if(currentScore<=maxScoreDifficulty) return (float)currentScore/maxScoreDifficulty;
         else return 1;
     }
 
